@@ -25,7 +25,7 @@ os.makedirs(DIALOGS_DIR, exist_ok=True)
 # Initialize assistant (do this at startup)
 assistant = CodeAssistant(
     json_path="project_structure.json",
-    markdown_dir="ellama_codebase/",
+    markdown_dir="../ellama_codebase/",
     model="claude-3-sonnet-20240229",
     load_faiss_from="project_faiss"
 )
