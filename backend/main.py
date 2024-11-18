@@ -30,6 +30,10 @@ assistant = CodeAssistant(
     load_faiss_from="project_faiss"
 )
 
+# save faiss index
+if not os.path.exists("project_faiss"):
+    assistant.save_faiss("project_faiss")
+
 # Load system prompt
 system_prompt = load_system_prompt()
 
