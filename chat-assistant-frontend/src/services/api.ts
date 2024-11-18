@@ -1,5 +1,10 @@
 const API_BASE_URL = 'http://localhost:8000/api'
 
+const DEFAULT_HEADERS = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+} as const
+
 export interface Message {
   role: 'user' | 'assistant'
   content: string
@@ -27,9 +32,7 @@ export const api = {
   async createDialog(name: string): Promise<CreateDialogResponse> {
     const response = await fetch(`${API_BASE_URL}/dialogs/new`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: DEFAULT_HEADERS,
       body: JSON.stringify({ name }),
     })
     
@@ -42,7 +45,7 @@ export const api = {
   },
 
   async getDialogs(): Promise<DialogsResponse> {
-    const response = await fetch(`${API_BASE_URL}/dialogs`)
+    const response = await fetch(`${API_BASE_URL}/dialogs`,{headers: DEFAULT_HEADERS})
     
     if (!response.ok) {
       const error = await response.json()
@@ -56,9 +59,7 @@ export const api = {
     console.log('API: sending message:', message, 'to dialog:', dialogId) // Add debug log
     const response = await fetch(`${API_BASE_URL}/chat/stream`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: DEFAULT_HEADERS,
       body: JSON.stringify({
         message,
         dialog_id: dialogId,

@@ -12,10 +12,11 @@ app = FastAPI()
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # In production, replace with your frontend URL
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],  # Add both localhost variations
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],  # Be more specific about allowed methods
+    allow_headers=["Content-Type", "Accept", "Authorization"],  # Be more specific about allowed headers
+    expose_headers=["Content-Type"]  # Expose specific headers to the frontend
 )
 
 # Directory for storing dialog histories
