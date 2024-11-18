@@ -209,7 +209,7 @@ class CodeAssistant:
         # Prepare messages with conversation history
         messages = [
             {"role": "system", "content": system_prompt},
-            # {"role": "user", "content": f"Context about the codebase:\n{context}"}
+            {"role": "user", "content": f"Context about the codebase:\n{context}"}
         ]
         
         # Add dialog-specific conversation history instead of self.conversation_history
@@ -271,7 +271,7 @@ def load_system_prompt(file_path="system_prompt.txt"):
 if __name__ == "__main__":
     assistant = CodeAssistant(
         json_path="project_structure.json",
-        markdown_dir="../ellama_codebase/",
+        markdown_dir="../ellama_codebase",
         model="claude-3-sonnet-20240229",
         load_faiss_from="project_faiss"
     )
