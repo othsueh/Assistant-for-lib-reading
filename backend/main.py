@@ -31,7 +31,7 @@ assistant = CodeAssistant(
     load_faiss_from="project_faiss"
 )
 
-# save faiss index
+# Save FAISS index
 if not os.path.exists("project_faiss"):
     assistant.save_faiss("project_faiss")
 
